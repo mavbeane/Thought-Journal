@@ -27,10 +27,8 @@ var sequelizeConnection = models.sequelize;
 // We run this query so that we can drop our tables even though they have foreign keys
 sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
-// make our tables
-// note: force:true drops the table if it already exists
 .then(function() {
-    return sequelizeConnection.sync({ force: true })
+    return sequelizeConnection.sync();
 })
 
 

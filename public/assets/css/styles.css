@@ -1,0 +1,17 @@
+label {
+    margin-top: 20px;
+}
+
+button {
+    margin: 40px auto;
+    max-width: 150px;
+}
+
+button#submit {
+    float: left!important;
+}
+
+input,
+textarea {
+    width: 100%;
+}

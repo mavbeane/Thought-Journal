@@ -4,17 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Thought Journal</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="static/css/styles.css">-->
     <link rel="stylesheet" href="static/css/styles.css">
 
-    
+    <!-- Javascript -->
     <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="static/js/jscolor.js"></script>
+    <script src="static/js/logic.js"></script>
 </head>
 
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <h1>Thought journal</h1>
+                <button id="add" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Add Entry</button>
+                <div class="container">
 
-    <h1>Thought journal</h1>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <h2>FEED</h2>
+                            <div id="feed">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">ADD A NEW ENTRY</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form id="newEntry" method="post">
+                                    <label for="user">Username</label>
+                                    <input type="text" id="user">
+                                    <label for="entry">Journal Entry: </label>
+                                    <textarea id="entry"></textarea>
+                                    <label for="color">Color: </label>
+                                    <input class="jscolor" value="ab2567">
+                                    <script>
+                                        function setTextColor(picker) {
+                                            document.getElementsByTagName('body')[0].style.color = '#' + picker.toString()
+                                        }
+                                    </script>
+                                    <label for="word">Word:</label>
+                                    <input type="text" id="word">
+                                </form>
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
 
 </body>
 
