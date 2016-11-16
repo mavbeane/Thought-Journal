@@ -4790,7 +4790,7 @@ tbody.collapse.in {
   float: left;
   padding: 20px 20px;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 40px;
   height: 60px;
 }
 .navbar-brand:hover, .navbar-brand:focus {
@@ -8327,6 +8327,7 @@ a > img.fh5co-align-center {
   padding: 20px;
   padding-bottom: 0;
   width: 100%;
+  height: 100%;
   float: left;
   font-size: 30px;
   font-weight: bold;
@@ -8338,6 +8339,11 @@ a > img.fh5co-align-center {
   float: left;
   font-size: 11px;
   line-height: 24px;
+}
+
+.readMore {
+  width: 100%;
+  background-color: transparent;
 }
 
 small {
@@ -8355,7 +8361,7 @@ small {
 }
 .moodRed {
   background-color: #f44842;
-  color: ;
+  color: black;
 }
 .moodPink {
   background-color: #f99db7;
@@ -8363,7 +8369,7 @@ small {
 }
 .moodPurple {
   background-color: #9e6da3;
-  color: ;
+  color: black;
 }
 .moodBlue {
   background-color: #2e4272;
