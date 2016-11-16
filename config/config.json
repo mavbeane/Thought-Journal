@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "iljdb1409",
+        "password": "password",
         "database": "journaldb",
         "host": "127.0.0.1",
         "dialect": "mysql"
