@@ -1,5 +1,14 @@
-var models = require('../../../models');
-var sequelizeConnection = models.sequelize
+var models = require('../models');
+var express = require('express');
+var router = express.Router();
+
+router.get('/', function(req, res) {
+    models.
+
+});
+
+
+
 
 $('form#newEntry').submit(function(e) {
 

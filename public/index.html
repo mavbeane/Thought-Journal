@@ -44,20 +44,20 @@
                                 <h4 class="modal-title" id="myModalLabel">ADD A NEW ENTRY</h4>
                             </div>
                             <div class="modal-body">
-                                <form id="newEntry" method="post">
+                                <form id="newEntry" action="entries/create" method="POST">
                                     <label for="user">Username</label>
-                                    <input type="text" id="user">
+                                    <input type="text" id="user" name="user">
                                     <label for="entry">Journal Entry: </label>
-                                    <textarea id="entry"></textarea>
+                                    <textarea id="entry" name="entry"></textarea>
                                     <label for="color">Color: </label>
-                                    <input class="jscolor" value="ab2567">
+                                    <input class="jscolor" name="color" value="ab2567">
                                     <script>
                                         function setTextColor(picker) {
                                             document.getElementsByTagName('body')[0].style.color = '#' + picker.toString()
                                         }
                                     </script>
                                     <label for="word">Word:</label>
-                                    <input type="text" id="word">
+                                    <input type="text" id="word" name="word">
                                 </form>
                             </div>
                             <div class="modal-footer ">
