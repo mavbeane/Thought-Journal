@@ -8341,9 +8341,28 @@ a > img.fh5co-align-center {
   line-height: 24px;
 }
 
+.bodyCopy {
+  padding: 20px;
+}
+
 .readMore {
   width: 100%;
   background-color: transparent;
+}
+
+.chart {
+  margin-bottom: 25px;
+  width: 100%;
+  border: 1px solid #aaa;
+}
+
+.feed {
+  margin-bottom: 25px;
+  border-radius: 5px;
+}
+
+.feed div {
+  width: 100%;
 }
 
 small {
