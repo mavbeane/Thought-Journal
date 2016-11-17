@@ -1,3 +1,5 @@
+/*
+
 var models = require('../models');
 var express = require('express');
 var router = express.Router();
@@ -21,7 +23,7 @@ $('form#newEntry').submit(function(e) {
         //$('#submit').on('click', function() {
 
         var newEntry = {
-            username: $('#user').val().trim(),
+            username: ,
             entry: $('#entry').val(),
             color: $('.jscolor').val(),
             word: $('#word').val().trim()
@@ -35,7 +37,7 @@ $('form#newEntry').submit(function(e) {
                     colorHex: newEntry.color,
                     word: newEntry.word,
                     Users: {
-                        username: newEntry.username
+                        username: newEntry.email
                     }
                 }, {
                     username: [models.Users]
@@ -45,3 +47,5 @@ $('form#newEntry').submit(function(e) {
 
     });
 });
+
+*/

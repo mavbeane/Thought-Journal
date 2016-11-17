@@ -7,13 +7,12 @@
 	<body>
 		<header>
 			{{#unless logged_in}}
-				<a href="/users/sign-in">Sign In</a>
+				<a href="/users/login">Sign In</a>
 				<a href="/users/new">Sign Up</a>
 			{{/unless}}
 
 			{{#if logged_in}}
-				Welcome {{email}}! <br>
-				You are user {{user_id}}.<br>
+				Hello {{username}}.<br>
 				<a href="/users/sign-out">Sign Out</a>
 			{{/if}}
 		</header>

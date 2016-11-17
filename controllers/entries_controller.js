@@ -2,7 +2,8 @@ var models = require('../models');
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res) {
+router.get('/entries', function(req, res) {
+
     models.Entries.findAll({
             include: [models.Users]
         })

@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var methodOverride = require('method-override');
+var passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
 
 //Model controllers
 var main_controller = require('./controllers/main_controller');
@@ -34,6 +36,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(session({ secret: 'app', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: true }));
 app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.set('views', path.join(__dirname, 'views'));
 
@@ -51,13 +55,6 @@ var models = require('./models');
 
 //Sync models
 var sequelizeConnection = models.sequelize;
-
-// We run this query so that we can drop our tables even though they have foreign keys
-sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
-    .then(function() {
-        return sequelizeConnection.sync();
-    })
-
 
 models.sequelize.sync().then(function() {
     var server = app.listen(app.get('port'), function() {
