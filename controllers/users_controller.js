@@ -3,6 +3,7 @@ var models = require('../models');
 var express = require('express');
 var router = express.Router();
 
+
 router.get('/new', function(req, res) {
     res.render('users/new');
 });
@@ -55,7 +56,7 @@ router.post('/create', function(req, res) {
 
         if (users.length > 0) {
             console.log(users)
-            res.send('we already have an email or username for this account');
+            res.send('That email is already signed up.');
         } else {
             bcrypt.genSalt(10, function(err, salt) {
                 bcrypt.hash(req.body.password, salt, function(err, hash) {

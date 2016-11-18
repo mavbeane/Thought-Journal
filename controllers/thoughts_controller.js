@@ -2,34 +2,45 @@ var models = require('../models');
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res) {
-    if (user == null) {
-        res.redirect('/users/sign-in')
+/*
+router.use(function(req, res, next) {
+    if (req.session.user_email == undefined) {
+        return res.render('index');
+    } else {
+        next();
     }
-    models.Thought.findAll({
-            include: [models.User]
-        })
-        .then(function(thoughts) {
-            res.render('thoughts/index', {
+});
+*/
+
+router.get('/', function(req, res) {
+    if (req.session.user_email == undefined) {
+        res.redirect('/users/sign-in')
+    } else {
+        models.Thought.findAll({
+            where: {
                 user_id: req.session.user_id,
-                email: req.session.user_email,
-                logged_in: req.session.logged_in,
+            }
+        }).then(function(thoughts) {
+            res.render('thoughts/index', {
+                // user_id: req.session.user_id,
+                // email: req.session.user_email,
+                // logged_in: req.session.logged_in,
                 thoughts: thoughts
             });
         });
+    }
 
 });
 
 router.get('/new', function(req, res) {
-    if (user == null) {
+    if (req.session.user_email == undefined) {
         res.redirect('/users/sign-in')
+    } else {
+        res.render('thoughts/new');
     }
-    res.render('thoughts/new');
 });
+
 router.post('/create', function(req, res) {
-    if (user == null) {
-        res.redirect('/users/sign-in')
-    }
     models.Thought.create({
             entry: req.body.entry,
             colorHex: req.body.colorHex,
