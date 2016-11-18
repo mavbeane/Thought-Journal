@@ -1,0 +1,14 @@
+<form id="newEntry" action="/thoughts/create" method="POST">
+    <label for="entry">Journal Entry: </label>
+    <textarea id="entry" name="entry"></textarea>
+    <label for="color">Color: </label>
+    <input class="jscolor" name="colorHex" value="ab2567">
+    <script>
+    function setTextColor(picker) {
+        document.getElementsByTagName('body')[0].style.color = '#' + picker.toString()
+    }
+    </script>
+    <label for="word">Word:</label>
+    <input type="text" id="word" name="word">
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>

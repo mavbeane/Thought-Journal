@@ -2,37 +2,47 @@ var models = require('../models');
 var express = require('express');
 var router = express.Router();
 
-router.get('/entries', function(req, res) {
-
-    models.Entries.findAll({
-            include: [models.Users]
+router.get('/', function(req, res) {
+    if (user == null) {
+        res.redirect('/users/sign-in')
+    }
+    models.Thought.findAll({
+            include: [models.User]
         })
-        .then(function(entries) {
-            res.render('entries/index', {
+        .then(function(thoughts) {
+            res.render('thoughts/index', {
                 user_id: req.session.user_id,
                 email: req.session.user_email,
                 logged_in: req.session.logged_in,
-                entries: entries
+                thoughts: thoughts
             });
         });
+
 });
 
-
+router.get('/new', function(req, res) {
+    if (user == null) {
+        res.redirect('/users/sign-in')
+    }
+    res.render('thoughts/new');
+});
 router.post('/create', function(req, res) {
-
-    models.Entries.create({
+    if (user == null) {
+        res.redirect('/users/sign-in')
+    }
+    models.Thought.create({
             entry: req.body.entry,
             colorHex: req.body.colorHex,
             word: req.body.word,
             user_id: req.session.user_id
         })
         .then(function() {
-            res.redirect('/');
+            res.redirect('/thoughts');
         })
 });
-
+/*
 router.put('/update/:id', function(req, res) {
-    models.Entries.update({
+    models.Thought.update({
             entry: req.body.entry
         }, {
             where: { id: req.params.id }
@@ -41,8 +51,9 @@ router.put('/update/:id', function(req, res) {
             res.redirect('/')
         });
 });
+
 router.delete('/delete/:id', function(req, res) {
-    models.Cat.destroy({
+    models.Thought.destroy({
             where: {
                 id: req.params.id
             }
@@ -51,5 +62,6 @@ router.delete('/delete/:id', function(req, res) {
             res.redirect('/');
         })
 });
+*/
 
 module.exports = router;
