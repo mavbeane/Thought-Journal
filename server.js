@@ -25,7 +25,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(methodOverride('_method'))
 
 // Sessions settings
-app.use(session({ secret: 'app', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: true }));
+app.use(session({ secret: 'app', cookie: { maxAge: 6000000 }, resave: false, saveUninitialized: true }));
 app.use(cookieParser());
 
 // Views

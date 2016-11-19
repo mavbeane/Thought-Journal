@@ -30,13 +30,8 @@ router.post('/login', function(req, res) {
 
         bcrypt.compare(req.body.password, user.password_hash, function(err, result) {
             if (result == true) {
-                // we save the logged in status to the session
                 req.session.logged_in = true;
-                // the username to the session
-                //req.session.username = user.username;
-                // the user id to the session
                 req.session.user_id = user.id;
-                // and the user's email.
                 req.session.user_email = user.email;
 
                 res.redirect('/thoughts');
@@ -67,11 +62,7 @@ router.post('/create', function(req, res) {
                         })
                         .then(function(user) {
                             req.session.logged_in = true;
-                            // the username to the session
-                            //req.session.username = user.username;
-                            // the user id to the session
                             req.session.user_id = user.id;
-                            // and the user's email.
                             req.session.user_email = user.email;
 
                             res.redirect('/thoughts');

@@ -171,7 +171,7 @@
 			var negative = 0;
 			var positive = 0;
 			var neutral = 0;
-			var scoring = []
+			var scoring = [['maganitude', 'score']]
 
 			{{#each thoughts}}
 				data = {"document": {"content": "{{this.word}}","type": "PLAIN_TEXT"}}
@@ -197,6 +197,7 @@
 					scoring.push([response.documentSentiment.magnitude, response.documentSentiment.score]);
 					console.log('__________')
 					console.log(scoring);
+
 				});
 			{{/each}}
 				
