@@ -7678,7 +7678,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #fh5co-main {
-  padding-top: 5em;
+  padding-top: 2em;
 }
 
 #fh5co-board .item {
@@ -8354,6 +8354,19 @@ a > img.fh5co-align-center {
   margin-bottom: 25px;
   width: 100%;
   border: 1px solid #aaa;
+}
+
+#buttonLeft {
+  padding-left: 10px;
+  width: 50%;
+  float: left;
+}
+
+#buttonRight {
+  padding-right: 10px;
+  width: 50%;
+  float: right;
+  text-align: right;
 }
 
 .feed {
