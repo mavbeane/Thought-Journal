@@ -9,7 +9,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Thought Journal</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="A thought journal with metrics." />
+		<meta name="description" content="Choose a word of the day, represent your mood with a color, and record your best thoughts each day. Find out what words you use most frequently and how your moods have changed over time with our analytics breakdown. Never forget an important thought!" />
 
 		<!-- 
 			//////////////////////////////////////////////////////
@@ -97,26 +97,34 @@
   <div id="fh5co-main">
     <div class="container">
       <div class="row">
-        <div class="login">
-          <form action="/users/login" method="POST">
-
-			<div class="form-group">
-				<label for="email">Email:</label>
-				<input type="text" id="email" name="email">
-			</div>
-
-			<div class="form-group">
-				<label for="password">Password:</label>
-				<input type="password" id="password" name="password">
-			</div>
-
-			<button type="submit" value="Log In">Log In</button>
-
-			
-			</form>
-       		<a href="new">OR START YOUR THOUGHT JOURNAL NOW</a>
-        </div>
-        
+		<div class="col-md-10 col-md-offset-1">
+		  			<p class="login">Choose a word of the day, represent your mood with a color, and record your best thoughts each day. Find out what words you use most frequently and how your moods have changed over time with our analytics breakdown. Never forget an important thought!</p>
+		</div>
+		<div class="col-md-6 col-md-offset-3">
+					<h2 class="center">Log In</h2>
+					<form action="/users/login" method="POST">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label><h4>Email:</h4></label>
+									<input type="text" class="form-control" placeholder="" name="email">	
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label><h4>Password:</h4></label>
+										<input type="password" class="form-control" placeholder="" name="password">	
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary" value="Sign in">
+								</div>
+							</div>
+						</div>
+					</form>
+					<p class="login"><a href="new">OR START YOUR THOUGHT JOURNAL HERE!</a></p>
+				</div>
       </div>
     </div>
   </div>

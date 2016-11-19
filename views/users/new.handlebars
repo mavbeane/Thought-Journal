@@ -9,7 +9,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Thought Journal</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="A thought journal with metrics." />
+		<meta name="description" content="Choose a word of the day, represent your mood with a color, and record your best thoughts each day. Find out what words you use most frequently and how your moods have changed over time with our analytics breakdown. Never forget an important thought!" />
 
 		<!-- 
 			//////////////////////////////////////////////////////
@@ -97,28 +97,38 @@
   <div id="fh5co-main">
     <div class="container">
       <div class="row">
-        <div class="login">
-          <p>Sign up with your email and password below.</p>
-          <form class="create-update-form" action="/users/create" method="POST">
-  
-            <div class="form-group">
-              <label for="em">Email:</label>
-              <input type="text" id="em" name="email">
-            </div>
-
-            <div class="form-group">
-              <label for="pass">Password:</label>
-              <input type="password" id="pass" name="password">
-            </div>
-
-            <button type="submit">Sign Up!</button>
-          </form>
-       		<a href="new">Already have a journal? Sign in here.</a>
-        </div>
-        
+		<div class="col-md-10 col-md-offset-1">
+			<p class="login">Choose a word of the day, represent your mood with a color, and record your best thoughts each day. Find out what words you use most frequently and how your moods have changed over time with our analytics breakdown. Never forget an important thought!</p>
+		</div>
+		<div class="col-md-6 col-md-offset-3">
+					<h3 class="center">Sign up below</h3>
+					<form action="/users/create" method="POST">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label><h4>Email:</h4></label>
+									<input type="text" class="form-control" placeholder="" name="email">	
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label><h4>Password:</h4></label>
+										<input type="password" class="form-control" placeholder="" name="password">	
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary" value="Sign up">
+								</div>
+							</div>
+						</div>
+					</form>
+					<p class="login"><a href="sign-in">Already have a journal? Sign in here.</a></p>
+				</div>
       </div>
     </div>
   </div>
+
 
 		<footer id="fh5co-footer">	
 			<div class="container">

@@ -69,10 +69,10 @@
 			<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
 			<h1 class="fh5co-logo"><a class="navbar-brand" href="/">Thought Journal</a></h1>
 			<ul>
-				<li class="active"><a href="/">Home</a></li>
-				<li><a href="../feed.html">Feed</a></li>
-				<li><a href="../thoughts/new">New Entry</a></li>
-				<li><a href="../analytics">Analytics</a></li>
+				<li class="active"><a href="/">Journal</a></li>
+				<li><a href="../thoughts/new">New Thought</a></li>
+				<li><a href="/analytics">Thought Charts</a></li>
+				<li><a href="/users/sign-out">Sign Out</a></li>
 				
 			</ul>
 			<h3 class="fh5co-lead">Connect with us</h3>
@@ -97,33 +97,26 @@
 	<!-- END .header -->
 
   <div id="fh5co-main">
-    <div class="container">
-      <div class="row">
-          <div id="fh5co-board" data-columns>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<h2>Analytics</h2>
+					<div class="fh5co-spacer fh5co-spacer-sm"></div>
 
-            {{#each thoughts}}
-
-                <div class="item" style="background-color:#{{this.colorHex}}" data-id="{{this.id}}">
-                    <div class="animate-box">
-                        <div class="wordDay">{{this.word}}</div>
-                        <div class="theDate">{{this.date}}</div>
-                        <div class="fh5co-desc entry">{{this.entry}}</div>
-                        <button type="button" class="btn readMore" data-toggle="modal" data-target="#modal1">
-                            Read More....
-                        </button>
-                    </div>
-                </div>
-
-                
-                
-           {{/each}}
-
-          </div>
-      </div>
-    </div>
-  </div>
-
-		<footer id="fh5co-footer">	
+					<h4>Mood Color</h4>
+					<img src="images/chart1.png" class="chart">
+					<h4>Positivity/Negativity</h4>
+					<img src="images/chart2.png" class="chart">
+					<h4>Word Cloud</h4>
+					<img src="images/wordcloud.png" class="chart">
+					
+				</div>
+        		
+        	</div>
+       </div>
+	</div>
+	
+	<footer id="fh5co-footer">	
 			<div class="container">
 				<div class="row row-padded">
 					<div class="col-md-12 text-center">
@@ -139,25 +132,6 @@
 				</div>
 			</div>
 		</footer>
-
-        <!-- MODAL -->
-        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="1modal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Shit</h4>
-                </div>
-                <div class="modal-body">
-                    D*nald Tr*mp got elected. We're all screwed. Time to move to Canada, assuming they'll take our sorry asses. I hope they have Nutella there. I love Nutella. I wonder if there's any Nutella in my pantry right now. Gonna go look.<br><br>
-                    Update: No Nutella. It's not okay. I'd Favor that shit, but I'm cheap. I'll just have to eat this peanut butter instead. *sad trombone*
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-            </div>
-        </div>
 
 
 		<!-- jQuery -->

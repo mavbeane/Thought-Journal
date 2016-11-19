@@ -13,10 +13,12 @@ var debug = require('debug')('express-example');
 var main_controller = require('./controllers/main_controller');
 var thoughts_controller = require('./controllers/thoughts_controller');
 var users_controller = require('./controllers/users_controller');
+var analytics_controller = require('./controllers/analytics_controller');
+
 
 // Express + port 
 var app = express();
-process.env.PORT || 3000;
+app.set('port', process.env.PORT || 3000);
 
 
 // override POST
@@ -45,6 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', main_controller);
 app.use('/thoughts', thoughts_controller);
 app.use('/users', users_controller);
+app.use('/analytics', analytics_controller);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
