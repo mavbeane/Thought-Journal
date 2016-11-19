@@ -16,7 +16,8 @@ var users_controller = require('./controllers/users_controller');
 
 // Express + port 
 var app = express();
-app.set('port', process.env.PORT || 3000);
+process.env.PORT || 3000;
+
 
 // override POST
 app.use(methodOverride('_method'))
