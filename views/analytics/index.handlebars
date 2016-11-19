@@ -59,6 +59,10 @@
 		<script src="js/respond.min.js"></script>
 		<![endif]-->
 
+
+		<script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
+		<script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+		ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
 	</head>
 	<body>
         <div id="signout">
@@ -94,21 +98,23 @@
 				</div>
 			</div>
 		</header>
+		</header>
 	<!-- END .header -->
 
   <div id="fh5co-main">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-					<h2>Analytics</h2>
+					<h2>Thought Charts</h2>
 					<div class="fh5co-spacer fh5co-spacer-sm"></div>
-
-					<h4>Mood Color</h4>
-					<img src="images/chart1.png" class="chart">
 					<h4>Positivity/Negativity</h4>
-					<img src="images/chart2.png" class="chart">
+					<div id="myPieChart"></div>
+
+					<div class="fh5co-spacer fh5co-spacer-sm"></div>
+					  <div id="scatterChart"></div>
+					
 					<h4>Word Cloud</h4>
-					<img src="images/wordcloud.png" class="chart">
+					<div id='myChart'></div>
 					
 				</div>
         		
@@ -153,11 +159,117 @@
 		<!-- Rebecca's custom JS -->
 		<script src="../assets/js/rebecca.js"></script>
 
-       <script>
-            var dataId = $('.item').data('id');
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+		<script type="text/javascript">
+			url = "https://language.googleapis.com/v1/documents:analyzeSentiment?key=AIzaSyBvLxSFmu2ZgawBOkgaANPAKtjcVUiSidU"
+
+			
+
+			var scoreArray = [];
+			var magnitudeArray = [];
+			var negative = 0;
+			var positive = 0;
+			var neutral = 0;
+			var scoring = [['Magnitude', 'Score']]
+
+			{{#each thoughts}}
+				data = {"document": {"content": "{{this.word}}","type": "PLAIN_TEXT"}}
+				$.ajax({
+					url: url,
+					type: "POST",
+					data: JSON.stringify(data),
+					contentType: "application/json"
+				}).done(function(response) {
+					var negNum = -.3;
+					var posNum = .3
+					var sentimentScore = response.documentSentiment.score;
+					if(sentimentScore <= negNum) {
+						negative++;
+					} else if(sentimentScore >= posNum) {
+						positive++;
+					} else if (sentimentScore = 0.1) {
+						neutral++;
+					};
+					magnitudeArray.push(response.documentSentiment.magnitude);
+					scoreArray.push(response.documentSentiment.score);
+
+					scoring.push([response.documentSentiment.magnitude, response.documentSentiment.score]);
+					console.log('__________')
+					console.log(scoring);
+				});
+			{{/each}}
+				
+			
+
+
+
+
+	
+			google.charts.load('current', {packages: ['corechart']});
+			google.charts.setOnLoadCallback(drawChart);
+
+			function drawChart() {
+			// Define the chart to be drawn.
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Element');
+			data.addColumn('number', 'Percentage');
+			data.addRows([
+				['Negative', negative],
+				['Positive', positive],
+				['Neutral', neutral]
+			]);
+
+			// Instantiate and draw the chart.
+			var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+			chart.draw(data, null);
+			}
+			
+			/*
+			//google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(drawScatterChart);
+			function drawScatterChart() {
+				var data = google.visualization.arrayToDataTable([
+					scoring
+				]);
+
+				var options = {
+				title: 'Sentiment',
+				hAxis: {title: 'Magnitude', minValue: 0, maxValue: 4},
+				vAxis: {title: 'Score', minValue: -1, maxValue: 1},
+				legend: 'none',
+				width: 600,
+				height: 300
+				};
+
+				var chart = new google.visualization.ScatterChart(document.getElementById('scatterChart'));
+
+				chart.draw(data, options);
+			}
+			*/
+
+			var myConfig = {
+			"graphset":[
+				{
+					"type":"wordcloud",
+					"options":{
+						"text":"{{#each thoughts}}{{this.word}} {{/each}}"
+						 }
+					}
+				]
+			};
+			
+			zingchart.render({ 
+				id : 'myChart', 
+				data : myConfig, 
+				height: "500px", 
+				width: "100%"
+			});
+
+		</script>
+           
             
 
-       </script>
 
 	</body>
 

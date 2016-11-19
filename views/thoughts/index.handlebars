@@ -131,7 +131,7 @@
                 <div class="item" style="background-color:#{{this.colorHex}}" data-id="{{this.id}}" data-text="{{this.entry}}">
                     <div class="animate-box">
                         <div class="wordDay">{{this.word}}</div>
-                        <div class="theDate">{{this.date}}</div>
+                        <div class="theDate">{{this.created_at}}</div>
                         <div class="fh5co-desc entry">{{this.entry}}</div>
                        <!--<button type="button" class="btn readMore" data-toggle="modal" data-target="#modal1">
                             Read More....
@@ -203,10 +203,12 @@
 
       	<script>
 			$('.item').click(function() {
-				$('.modal-body').html('<div class="wordDay">{{this.word}}</div><div class="theDate">{{this.date}}</div><div class="fh5co-desc">{{this.entry}}</div>');
 				$('#modal1').modal('toggle')
 			});
 		</script>  
+
+		
+
 
 	</body>
 
