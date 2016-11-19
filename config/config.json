@@ -1,9 +1,10 @@
 {
     "development": {
-        "username": "root",
-        "password": "iljdb1409",
-        "database": "journaldb",
-        "host": "127.0.0.1",
+
+        "username": "ls913o3fgmzziujt",
+        "password": "dybm4j1199ffguv3",
+        "database": "tlmvsdis5dnunh5j",
+        "host": "enqhzd10cxh7hv2e.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         "dialect": "mysql"
     },
     "test": {
