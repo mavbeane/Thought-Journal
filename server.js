@@ -9,13 +9,6 @@ var session = require('express-session');
 var methodOverride = require('method-override'); // for deletes in express
 var debug = require('debug')('express-example');
 
-
-models.sequelize.sync().then(function() {
-    var server = app.listen(app.get('port'), function() {
-        debug('Express server listening on port ' + server.address().port);
-    });
-});
-
 // Model controllers
 var main_controller = require('./controllers/main_controller');
 var thoughts_controller = require('./controllers/thoughts_controller');
@@ -23,7 +16,7 @@ var users_controller = require('./controllers/users_controller');
 
 // Express + port 
 var app = express();
-var port = process.env.PORT || 3000;
+app.set('port', process.env.PORT || 3000);
 
 // override POST
 app.use(methodOverride('_method'))
@@ -68,6 +61,11 @@ app.use(function(err, req, res, next) {
     })
 });
 
+models.sequelize.sync().then(function() {
+    var server = app.listen(app.get('port'), function() {
+        debug('Express server listening on port ' + server.address().port);
+    });
+});
 
 // our module get's exported as app.
 module.exports = app;
