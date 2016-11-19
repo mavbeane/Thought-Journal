@@ -2,24 +2,12 @@
 var express = require('express');
 var path = require('path');
 var models = require("./models");
-//var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser'); // for working with cookies
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var methodOverride = require('method-override'); // for deletes in express
 var debug = require('debug')('express-example');
-
-
-// we sync the models with our db 
-// (thus creating the apropos tables)
-models.sequelize.sync().then(function() {
-    // set our app to listen to the port we set above
-    var server = app.listen(app.get('port'), function() {
-        // then save a log of the listening to our debugger.
-        debug('Express server listening on port ' + server.address().port);
-    });
-});
 
 // Model controllers
 var main_controller = require('./controllers/main_controller');
@@ -73,6 +61,11 @@ app.use(function(err, req, res, next) {
     })
 });
 
+models.sequelize.sync().then(function() {
+    var server = app.listen(app.get('port'), function() {
+        debug('Express server listening on port ' + server.address().port);
+    });
+});
 
 // our module get's exported as app.
 module.exports = app;
